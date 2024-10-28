@@ -29,6 +29,9 @@ export default {
     clickHandler(){
       console.log(this.inputText);
       if(this.inputText.trim().toLocaleLowerCase() !== this.pokeName.toLocaleLowerCase()){
+
+        this.inputText=''
+        alert('El nombre no coincide con el Pokémon. Inténtalo nuevamente');
         return 
       }
 
