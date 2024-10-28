@@ -23,14 +23,14 @@ export default {
   },
   created(){
     try {
-      this.HitApi();
+      this.GetPokemonList();
     } catch (error) {
       throw Error(error);
     }
   },
 
   methods:{
-    async HitApi(){
+    async GetPokemonList(){
       const req = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
       const resp = await req.json();
 
@@ -42,7 +42,20 @@ export default {
           name:pkm.name,
           number,
         }
-      })
+      });
+
+
+
+
+      for (let i = this.pokeList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.pokeList[i], this.pokeList[j]] = [this.pokeList[j], this.pokeList[i]];
+      }
+
+
+
+
+      return this.pokeList = this.pokeList.slice(0, 16);
     }
   }
 }
