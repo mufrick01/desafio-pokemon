@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import PokeCard from './PokeCard.vue';
+import PokeCard from './components/PokeCard.vue';
 
 
 export default {
