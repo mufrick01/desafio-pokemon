@@ -1,11 +1,11 @@
 <template>
   <article>
     <img :src="this.srcImg" :alt="`image del pokemon ${pokeName}`" :class="{'whoisthat':!correctName}">
-    <h4 v-if="correctName" >{{ pokeName }}</h4>
+    <h4 v-if="correctName" class="text-capitalize text-center p-0 m-0" >{{ pokeName }}</h4>
     <div v-if="!correctName">
       <form @submit.prevent="clickHandler">
-        <input v-model="inputText" type="text">
-        <button type="submit">click</button>
+        <input v-model="inputText" type="text" placeholder="Nombre del Pokémon" required>
+        <button type="submit" class="btn btn-warning my-2 fw-bold">Descubrir</button>
       </form>
     </div>
   </article>
@@ -36,6 +36,7 @@ export default {
       }
 
       this.correctName=true;
+      this.$emit('discovered-pokemon',true);
     }
   }
 };

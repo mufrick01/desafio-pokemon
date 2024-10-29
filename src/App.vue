@@ -1,8 +1,18 @@
 <template>
+  <div class="d-flex justify-content-center">
+    <img src="../src/assets/pkm-title.png" alt="" style="height: 200px;"/>
+  </div>
   <h1 class="text-center">¿Quién es ese Pokémon?</h1>
+  <p class="text-center"> Pokemones descubiertos: {{ discoverdPokemon }}/{{ totalPokemons }} </p>
   <div id="app" class="container">
     <div class="row">
-      <PokeCard  v-for="(pokemon, index) in pokeList"   :key="`poke-${index}`"     :pokeName="pokemon.name" :pokeNumber="pokemon.number" class="col-6 col-lg-3" />
+      <PokeCard  v-for="(pokemon, index) in pokeList"   
+      :key="`poke-${index}`"     
+      :pokeName="pokemon.name" 
+      :pokeNumber="pokemon.number" 
+      class="col-6 col-lg-3" 
+      @discovered-pokemon="onDiscoveredPokemon"
+      />
     </div>
   </div>
 </template>
@@ -18,7 +28,9 @@ export default {
   },
   data(){
     return{
-      pokeList:[]
+      pokeList:[],
+      discoverdPokemon:0,
+      totalPokemons:20,
     }
   },
   created(){
@@ -55,7 +67,11 @@ export default {
 
 
 
-      return this.pokeList = this.pokeList.slice(0, 16);
+      return this.pokeList = this.pokeList.slice(0, this.totalPokemons);
+    },
+
+    onDiscoveredPokemon(){
+      this.discoverdPokemon++;
     }
   }
 }
