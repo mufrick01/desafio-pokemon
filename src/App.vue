@@ -1,20 +1,24 @@
 <template>
-  <div class="d-flex justify-content-center">
-    <img src="../src/assets/pkm-title.png" alt="" style="height: 200px;"/>
+  <div class="d-flex justify-content-center row">
+    <img src="../src/assets/pkm-title.png" alt="" class="col-12 col-lg-6"/>
   </div>
   <h1 class="text-center">¿Quién es ese Pokémon?</h1>
-  <p class="text-center"> Pokemones descubiertos: {{ discoverdPokemon }}/{{ totalPokemons }} </p>
-  <div id="app" class="container">
+  <p class="text-center"> Pokemons descubiertos: {{ discoverdPokemon }}/{{ totalPokemons }} </p>
+  <div id="app" class="container mb-5">
     <div class="row">
       <PokeCard  v-for="(pokemon, index) in pokeList"   
       :key="`poke-${index}`"     
       :pokeName="pokemon.name" 
       :pokeNumber="pokemon.number" 
-      class="col-6 col-lg-3" 
+      class="col-12 col-lg-3" 
       @discovered-pokemon="onDiscoveredPokemon"
       />
     </div>
   </div>
+  <footer>
+    <hr/>
+    <p class="text-capitalize text-center">Ningún derecho reservado</p>
+  </footer>
 </template>
 
 <script>
